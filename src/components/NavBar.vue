@@ -35,7 +35,7 @@ import { ref, computed } from 'vue'
 export default {
     name: 'NavBar',
     setup() {
-        const menu = ref('home')
+        const menu = ref('profile')
         const menus = [
             {key: 'home', value: 'Home', URL: '#', position: 'left'},
             {key: 'app', value: 'Application', URL: '#', position: 'left'},

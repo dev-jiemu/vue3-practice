@@ -1,14 +1,17 @@
 export const about_me = {
+    namespaced: true,
     state: () => ({
         name: null,
         email: null,
+        resume: [],
     }),
     getters: {
-        name: (state) => {
-            return state.name
-        },
-        email: (state) => {
-            return state.email
+        user_data: (state) => {
+          return {
+              name: state.name,
+              email: state.email,
+              resume: state.resume,
+          }
         },
     },
     mutations: {

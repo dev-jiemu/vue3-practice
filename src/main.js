@@ -1,5 +1,5 @@
 import { createApp } from 'vue'
-import { store } from '/@store/index.js'
+import { store } from '/@store'
 
 import './index.css'
 import App from './App.vue'
