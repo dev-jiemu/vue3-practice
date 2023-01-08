@@ -13,7 +13,7 @@
 </template>
 
 <script>
-import Card from '/@components/Card'
+import Card from '/@components/Card.vue'
 import { computed } from "vue";
 import { useStore } from "vuex";
 import useAxios from '/@app_modules/axios'

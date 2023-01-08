@@ -12,13 +12,16 @@
 </template>
 
 <script>
-import AppCard from "/@components/AppCard";
+import AppCard from "/@components/AppCard.vue";
 import { ref, onMounted, computed } from "vue";
 import { useStore } from "vuex";
 import useAxios from "/@app_modules/axios"
 
 export default {
     name: "Application",
+    components: {
+        AppCard,
+    },
     setup() {
         const store = useStore()
         const { axiosGet } = useAxios()
