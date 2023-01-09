@@ -1,17 +1,14 @@
 <template>
-    <nav-bar/>
-    <profile/>
+    <nav-bar />
+    <router-view></router-view>
 </template>
 
 <script>
-import NavBar from './components/NavBar.vue'
-import Profile from "/@components/Profile.vue";
+import NavBar from '/@components/NavBar.vue'
 export default {
-  name: 'App',
-  components: {
-      Profile,
-      NavBar,
-  }
+    name: 'App',
+    components: {
+        NavBar,
+    },
 }
-
 </script>

@@ -11,9 +11,8 @@ export const applications = {
             if (filter) {
                 return state.applications.filter((i) => i.name == filter)
             }
-
             return state.applications
-        }
+        },
     },
     mutations: {
         SET_DATA(state, data) {
@@ -25,6 +24,6 @@ export const applications = {
             if (data.length > 0) {
                 commit('SET_DATA', data)
             }
-        }
+        },
     },
 }
