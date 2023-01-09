@@ -32,7 +32,13 @@ export default {
             store.getters['applications/applications_count']
         )
 
-
+        onMounted(() => {
+            if (!store.getters["applications/applications_count"]) {
+                axiosGet('/db/applications', (data) => {
+                    store.dispatch('applications/setApplications', data.data)
+                })
+            }
+        })
 
         return {
             applications, applications_count

@@ -9,7 +9,7 @@ export const applications = {
         },
         applications: (state) => (filter = null) => {
             if (filter) {
-                return state.applications.filter((i) => i,name == filter)
+                return state.applications.filter((i) => i.name == filter)
             }
 
             return state.applications
