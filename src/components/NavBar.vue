@@ -22,16 +22,47 @@
                             }}</router-link>
                     </li>
                 </ul>
+                <ul class="navbar-nav" v-show="notification.id > 0">
+                    <li class="nav-item">
+                        <button
+                            type="button"
+                            class="btn btn-danger"
+                            @click="onOpenNotification"
+                        >
+                            &#128226;
+                        </button>
+                    </li>
+                </ul>
             </div>
         </div>
     </nav>
+    <teleport to="#notification" v-if="show_notification">
+        <div
+            :class="'container notification border border-dark rounded-3 mt-3 p-3 bg-notification.type'">
+            <div v-if="notification.type" class="d-flex">
+                            <span class="me-auto fs-4 fw-bold text-uppercase text-light">
+                                {{ notification.type }}
+                            </span>
+                <button type="button" class="btn fw-bold" @click="onCloseNotification">
+                    &times;
+                </button>
+            </div>
+            <hr />
+            <div class="text-light text-wrap"> {{ notification.content }}</div>
+        </div>
+    </teleport>
 </template>
 
 <script>
-import { computed } from 'vue'
+import {computed, onMounted, reactive, ref, useAttrs} from 'vue'
+import {getCookie, setCookie} from "/@app_modules/module.js";
+import useAxios from '/@app_modules/axios.js';
 export default {
     name: 'NavBar',
     setup() {
+        let notification = reactive({id: 0})
+        const show_notification = ref(false)
+
         const menus = [
             { key: 'home', value: '홈', url: '/home', position: 'left' },
             {
@@ -43,6 +74,33 @@ export default {
         const right_menus = computed(() =>
                 menus.filter((i) => i.position == 'right')
         )
+
+        const onOpenNotification = (evt) => {
+            if (evt) {
+                evt.preventDefault()
+            }
+
+            show_notification.value = true
+        }
+
+        const onCloseNotification = (evt) => {
+            if (evt) {
+                evt.preventDefault()
+            }
+
+            setCookie('notification', notification.id, 1)
+            notification.id = 0
+            show_notification.value = false
+        }
+
+        onMounted(() => {
+            const block_noti_id = getCookie('notification') || 0
+            const { axiosGet } = useAxios()
+            axiosGet(`/db/notification/${block_noti_id}`, (data) => {
+                Object.assign(notification, data.data)
+            })
+        })
+
         return {
             menu_category: [
                 {
@@ -52,7 +110,16 @@ export default {
                 },
                 { id: 2, me_auto: false, value: right_menus.value },
             ],
+            notification,
+            show_notification,
+            onOpenNotification,
+            onCloseNotification,
         }
     },
 }
 </script>
+<style>
+    .notification {
+        text-shadow: 2px 2px 2px gray;
+    }
+</style>
