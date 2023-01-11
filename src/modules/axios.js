@@ -5,7 +5,7 @@ export default function() {
     const axiosGet = (URL, onSuccess = null, onFailed = null) => {
         const final_URL = URL.startsWith('http') ? URL : BASE_URL + URL
         axios.get(final_URL).then((res) => {
-          if (res.status === 2000 && res.data.rsp == 'ok') {
+          if (res.status === 200 && res.data.rsp == 'ok') {
               if (onSuccess) {
                   onSuccess(res.data)
               }
