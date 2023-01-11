@@ -12,7 +12,7 @@
 </template>
 
 <script>
-import { provide, ref, onMounted, computed } from 'vue'
+import { onMounted, computed } from 'vue'
 import { useStore } from 'vuex'
 import AppCard from '/@components/AppCard.vue'
 import useAxios from '/@app_modules/axios.js'

@@ -72,6 +72,7 @@ export default {
         const store = useStore()
         const { axiosGet } = useAxios()
         const onSuccess = (data) => {
+            console.log(data.data)
             store.dispatch('about_me/setAboutMeData', data.data)
         }
         axiosGet('/db/about-me', onSuccess)
