@@ -102,6 +102,27 @@ function fn_notification(db) {
     )
 }
 
+function fn_blog(db) {
+    db.run(
+        "CREATE TABLE IF NOT EXISTS tbl_blog (id INTEGER PRIMARY KEY AUTOINCREMENT, title TEXT, date DATETIME DEFAULT (datetime('now', 'localtime')), post TEXT)",
+        (err) => {
+            if (!err) {
+                for (let i = 0; i < 100; i++) {
+                    let query = `INSERT INTO tbl_blog (title, post)
+                                 VALUES ('Sample Blog Test',
+                                         'January 1, 2021 by <a href="#">Mark</a></p><p>This blog post shows a few different types of content that’s supported and styled with Bootstrap. Basic typography, lists, tables, images, code, and more are all supported as expected.</p><hr><p>This is some additional paragraph placeholder content. It has been written to fill the available space and show how a longer snippet of text affects the surrounding content. We ll repeat it often to keep the demonstration flowing, so be on the lookout for this exact same string of text.</p><p>This is some additional paragraph placeholder content. It has been written to fill the available space and show how a longer snippet of text affects the surrounding content. We ll repeat it often to keep the demonstration flowing, so be on the lookout for this exact same string of text.</p><h3>Example lists</h3><p>This is some additional paragraph placeholder content. It is a slightly shorter version of the other highly repetitive body text used throughout. This is an example unordered list:</p><ul><li>First list item</li><li>Second list item with a longer description</li><li>Third list item to close it out</li></ul><p>And this is an ordered list:</p><ol><li>First list item</li><li>Second list item with a longer description</li><li>Third list item to close it out</li></ol><p>And this is a definiton list:</p><dl><dt>HyperText Markup Language (HTML)</dt><dd>The language used to describe and define the content of a Web page</dd><dt>Cascading Style Sheets (CSS)</dt><dd>Used to describe the appearance of Web content</dd><dt>JavaScript (JS)</dt><dd>The programming language used to build advanced Web sites and applications</dd></dl><p>Most of these elements are styled by browsers with few modifications on our part.</p><h2>Heading</h2><p>This is some additional paragraph placeholder content. It has been written to fill the available space and show how a longer snippet of text affects the surrounding content. We ll repeat it often to keep the demonstration flowing, so be on the lookout for this exact same string of text.</p><h3>Sub-heading</h3><p>This is some additional paragraph placeholder content. It has been written to fill the available space and show how a longer snippet of text affects the surrounding content. We ll repeat it often to keep the demonstration flowing, so be on the lookout for this exact same string of text.</p><pre><code>Example code block</code></pre><p>This is some additional paragraph placeholder content. It is a slightly shorter version of the other highly repetitive body text used throughout.')`
+                    db.run(query)
+
+                    query = `INSERT INTO tbl_blog (title, post)
+                             VALUES ('꿈에(박정현) 가사',
+                                     '<p><em>김연지님이 최근에 부르신 꿈에가 너무 좋아 가사를 공유해봅니다.</em></p> <div>어떤말을해야하는지<br />난 너무 가슴이 떨려서<br />우리 옛날 그대로의<br />모습으로 만나고 있네요</div> <div>이건 꿈인걸 알지만<br />지금 이대로 깨지않고서<br />영원히 잠잘수 있다면</div> <div>날 안아주네요<br />예전모습처럼<br />그동안 힘들어진<br />나를 보며 위로하네요<br />내손을 잡네요<br />지친 맘 쉬라며<br />지금도 그대 손은<br />그때처럼 따뜻하네요</div> <div>혹시 이게 꿈이란걸<br />그대가 알게하진 않을거야<br />내가 정말 잘할거야<br />그대 다른 생각 못하도록<br />그대 이젠 가지마요<br />그냥 여기서 나와 있어줘요<br />나도 깨지않을게요<br />이젠 보내지 않을거예요</div> <div>계속 나를 안아주세요<br />예전모습처럼<br />그 동안 힘들어진<br />나를 보며 위로하네요<br />내손을 잡네요<br />지친 맘 이제 쉬라며<br />지금도 그대 손은<br />그때처럼따뜻하네요<br />대답해줘요<br />그대도 나를<br />나만큼 그리워했다고...</div> <div>바보같이 즐거워만하는 날보며<br />안쓰런 미소로 (슬픈 미소로)<br />이제 난 먼저갈게<br />미안한듯 얘기하네요<br />나처럼 그대도 알고있었군요<br />그래도 고마워요<br />이렇게라도 또만나줘서</div>')`
+                    db.run(query)
+                }
+            }
+        }
+    )
+}
+
 module.exports.run = function (db, type) {
     if (type == TYPE.about_me) {
         fn_about_me(db)
@@ -111,5 +132,7 @@ module.exports.run = function (db, type) {
         fn_applications(db)
     } else if (type == TYPE.notification) {
         fn_notification(db)
+    } else if (type == TYPE.blog) {
+        fn_blog(db)
     }
 }
