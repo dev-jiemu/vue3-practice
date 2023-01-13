@@ -69,6 +69,7 @@ export default {
                 key: 'app', value: '어플리케이션', url: '/application', position: 'left',
             },
             { key: 'profile', value: 'Profile', url: '/profile', position: 'right' },
+            { key: 'admin', value: 'Admin', url: '/admin', position: 'right' },
         ]
         const left_menus = computed(() => menus.filter((i) => i.position == 'left'))
         const right_menus = computed(() =>
