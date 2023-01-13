@@ -44,6 +44,7 @@
 import { defineComponent, computed } from 'vue'
 import { useStore } from 'vuex'
 import useAxios from '/@app_modules/axios.js'
+import { useAboutMeStore } from "/@store/modules/about-me.js";
 const Card = defineComponent({
     name: 'Card',
     props: {
@@ -69,6 +70,7 @@ const Card = defineComponent({
 export default {
     name: 'Profile',
     setup() {
+        /*
         const store = useStore()
         const { axiosGet } = useAxios()
         const onSuccess = (data) => {
@@ -77,6 +79,17 @@ export default {
         }
         axiosGet('/db/about-me', onSuccess)
         const user_data = computed(() => store.getters['about_me/user_data'])
+        return {
+            user_data,
+        }
+         */
+        const aboutMe = useAboutMeStore()
+        const { axiosGet } = useAxios()
+        axiosGet('/db/about-me', (data) => {
+            console.log(data.data)
+            aboutMe.setAboutMeData(data.data)
+        })
+        const user_data = computed(() => aboutMe.getUserData)
         return {
             user_data,
         }
