@@ -104,7 +104,7 @@ function fn_notification(db) {
 
 function fn_blog(db) {
     db.run(
-        "CREATE TABLE IF NOT EXISTS tbl_blog (id INTEGER PRIMARY KEY AUTOINCREMENT, title TEXT, date DATETIME DEFAULT (datetime('now', 'localtime')), post TEXT)",
+        "CREATE TABLE IF NOT EXISTS tbl_blog (id INTEGER PRIMARY KEY AUTOINCREMENT, title TEXT, date DATETIME DEFAULT (datetime('now','localtime')), post TEXT, type TEXT DEFAULT 'html')",
         (err) => {
             if (!err) {
                 for (let i = 0; i < 100; i++) {
@@ -124,7 +124,7 @@ function fn_blog(db) {
 }
 
 function fn_accounts(db) {
-    db.run('DROP TABLE IF EXISTS tbl_accounts')
+    //db.run('DROP TABLE IF EXISTS tbl_accounts')
 
     db.run(
         "CREATE TABLE IF NOT EXISTS tbl_accounts (id INTEGER PRIMARY KEY AUTOINCREMENT, email TEXT, password TEXT, date DATETIME DEFAULT (datetime('now', 'localtime')), grade TEXT, token TEXT)",
