@@ -8,7 +8,8 @@
                 <article class="blog-post" v-for="article in sliced_posts" :key="article.id" :id="'article-' + article.id">
                     <h2 class="blog-post-title"> {{ article.title }} </h2>
                     <p class="blog-post-meta"> {{ article.date }} </p>
-                    <div v-html="article.post"/>
+                    <div v-if="article.type == 'html'" v-html="article.post"/>
+                    <markdown v-else-if="(type = 'md')" id="md" :source="article.post"/>
                 </article>
 
                 <nav class="blog-pagination" aria-label="Pagination">
@@ -79,9 +80,13 @@
 <script>
 import {computed, onMounted, reactive, ref} from "vue";
 import useAxios from '/@app_modules/axios'
+import MarkDown from "vue3-markdown-it";
 
 export default {
     name: "Blog",
+    components: {
+      MarkDown,
+    },
     setup() {
         const { axiosGet } = useAxios()
         const posts = reactive([])
