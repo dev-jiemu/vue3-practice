@@ -13,7 +13,7 @@
                     Name*
                 </v-col>
                 <v-col cols="10">
-                    <v-text-field v-model="name" density="compact"></v-text-field>
+                    <v-text-field v-model="form.name" density="compact"></v-text-field>
                 </v-col>
             </v-row>
             <v-row>
@@ -21,7 +21,7 @@
                     Organization
                 </v-col>
                 <v-col cols="10">
-                    <v-text-field v-model="organization" density="compact"></v-text-field>
+                    <v-text-field v-model="form.organization" density="compact"></v-text-field>
                 </v-col>
             </v-row>
             <v-row>
@@ -29,7 +29,7 @@
                     E-mail*
                 </v-col>
                 <v-col cols="10">
-                    <v-text-field v-model="email" density="compact"></v-text-field>
+                    <v-text-field v-model="form.email" density="compact"></v-text-field>
                 </v-col>
             </v-row>
             <v-row>
@@ -37,7 +37,7 @@
                     Title*
                 </v-col>
                 <v-col cols="10">
-                    <v-text-field v-model="title" density="compact"></v-text-field>
+                    <v-text-field v-model="form.title" density="compact"></v-text-field>
                 </v-col>
             </v-row>
             <v-row>
@@ -50,23 +50,39 @@
                                 rows="4"
                                 row-height="30"
                                 shaped
-                                :model-value="inquiry"></v-textarea>
+                                v-model="form.inquiry"></v-textarea>
                 </v-col>
             </v-row>
             <v-divider class="pt-5"/>
-            <v-btn block color="success">Send</v-btn>
+            <v-btn block color="success" @click="sendEmail">Send</v-btn>
         </v-card-text>
     </v-card>
 </template>
 
 <script setup>
 
-import {ref} from "vue";
+import { reactive } from "vue";
+import axios from "axios";
 
-const name = ref('')
-const organization = ref('')
-const email = ref('')
-const title = ref('')
-const inquiry = ref('content')
+const form = reactive({
+    name: '',
+    organization: '',
+    email: '',
+    title: '',
+    inquiry: ''
+})
+
+function sendEmail() {
+    if (confirm('이메일을 전송하시겠습니까?')) {
+        let url = 'aws-rambda-function-url'
+
+        axios.post(url, JSON.stringify(form)).then((res) => {
+            alert('완료되었습니다.')
+            console.log(res)
+        }).catch((e) => {
+            console.log(e)
+        })
+    }
+}
 
 </script>
