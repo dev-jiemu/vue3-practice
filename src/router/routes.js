@@ -2,7 +2,7 @@ import Profile from '/@components/Profile.vue'
 import Application from '/@components/Application.vue'
 import Home from '/@components/Home.vue'
 import Admin from '/@components/Admin.vue'
-import SelectBox from "/@components/SelectBox.vue"
+import SelectBox from "../components/SelectBox.vue"
 import SelectBoxVer2 from "/@components/SelectBoxVer2.vue";
 import { defineComponent } from 'vue'
 

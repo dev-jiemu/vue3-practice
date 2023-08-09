@@ -5,7 +5,6 @@
                 <v-menu
                         ref="menu"
                         transition="scroll-y-transition"
-                        @click="disableScrollSnap"
                 >
                     <template v-slot:activator="{ props }">
                         <v-btn
@@ -19,7 +18,10 @@
                     <v-list
                             ref="list"
                             max-height="150"
-                            class="listScroll"
+                            :class="{
+                                'listScroll': true,
+                                'enableListScroll': scroll,
+                            }"
                     >
                         <v-list-item
                                 :class="{ 'selected-item': item === selected }"
@@ -38,20 +40,31 @@
 </template>
 
 <script setup>
-import { ref } from "vue";
+import {onMounted, onUnmounted, ref} from "vue";
 
 const selected = ref("04");
 const time = ["00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11"];
-const menu = ref(null);
-const list = ref(null);
+const scroll = ref(true);
 
 function settingSelected(value) {
     selected.value = value;
+    scroll.value = true;
 }
 
-function disableScrollSnap() {
-    list.value.style.scrollSnapType = "none";
-}
+const handleWheelEvent = (event) => {
+    if (scroll.value == true) {
+        scroll.value = false
+    }
+};
+
+onMounted(() => {
+    window.addEventListener('wheel', handleWheelEvent);
+});
+
+onUnmounted(() => {
+    window.removeEventListener('wheel', handleWheelEvent);
+});
+
 
 </script>
 
