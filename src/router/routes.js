@@ -7,6 +7,7 @@ import SelectBoxVer2 from "/@components/SelectBoxVer2.vue";
 import TextareaLimitLength from "/@components/TextareaLimitLength.vue";
 import DatePicker from "/@components/DatePicker.vue"
 import VueChartJsLine from "/@components/VueChartJsLine.vue";
+import MultiChips from "/@components/MultiChips.vue"
 import { defineComponent } from 'vue'
 
 const NotFound = defineComponent({
@@ -24,6 +25,7 @@ const routes = [
     { path: '/textarea_limit', name: 'textarea_limit', component: TextareaLimitLength},
     { path: '/date_picker', name: 'date_picker', component: DatePicker },
     { path: '/vue_chart_js', name: 'vue_chart_js', component: VueChartJsLine },
+    { path: '/multi_chips', name: 'multi_chips', component: MultiChips },
     { path: '/:catchAll(.*)+', component: NotFound },
 ]
 
