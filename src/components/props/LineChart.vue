@@ -1,5 +1,5 @@
 <template>
-    <Line :data="data" :options="options" />
+    <Line ref="line" :data="data" :options="options" />
 </template>
 
 <script setup>
@@ -14,6 +14,7 @@ import {
     Tooltip,
     Legend,
 } from "chart.js";
+import {ref} from "vue";
 
 ChartJS.register(
     CategoryScale,
@@ -26,4 +27,6 @@ ChartJS.register(
 );
 
 const { data, options } = defineProps(["data", "options"]);
+const line = ref(null)
+
 </script>

@@ -35,16 +35,27 @@ function addData() {
     let dataObj = {}
     let color = getRandomColor()
 
-    dataObj.label = 'New Data'
+    dataObj.label = 'New Object'
     dataObj.borderColor = color
     dataObj.backgroundColor = color
     dataObj.tension = 0.5
     dataObj.data = generateRandomNumbers(7)
     dataObj.hidden = false
 
-    newDataset.push(dataObj)
-    chartData.value = {...chartData.value, datasets: newDataset}
-    console.log('datasets : ', chartData.value.datasets)
+    //newDataset.push(dataObj)
+    chartData.value.datasets.push(dataObj)
+    // chartData.value = {...chartData.value, datasets: newDataset}
+    // console.log('datasets : ', chartData.value.datasets)
+}
+
+function updateData() {
+    chartData.value.datasets.forEach(item => {
+        if (item.label.includes('Data') && item.hidden == false) {
+            item.hidden = true
+        } else {
+            item.hidden = false
+        }
+    })
 }
 
 function updateLines(index) {
@@ -77,5 +88,6 @@ export const useCharStatStore = defineStore('chartStat', () => {
         chartData,
         initData,
         addData,
+        updateData
     }
 })

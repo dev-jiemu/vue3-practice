@@ -3,12 +3,13 @@
         <v-card-text>
             <div>
                 <v-btn class="ma-2" color="success" variant="outlined" @click="addData">Add</v-btn>
+                <v-btn class="ma-2" color="primary" variant="outlined" @click="updateData">Update</v-btn>
                 <v-btn class="ma-2" color="red" variant="outlined">Delete</v-btn>
             </div>
         </v-card-text>
     </v-card>
     <v-card height="500px">
-        <line-chart ref="chart" :data="chartData" :options="options"/>
+        <line-chart :key="updateKey" :data="chartData" :options="options"/>
     </v-card>
 </template>
 
@@ -22,6 +23,8 @@ const chartData = computed(() => {
     return chartStat.chartData
 })
 
+const updateKey = ref(0)
+
 const options = {
     responsive: true,
     maintainAspectRatio: false,
@@ -33,11 +36,14 @@ const options = {
     }
 }
 
-
-const chart = ref(null)
-
 function addData() {
     chartStat.addData()
+    updateKey.value++
+}
+
+function updateData() {
+    chartStat.updateData()
+    updateKey.value++
 }
 
 onBeforeMount(() => {
