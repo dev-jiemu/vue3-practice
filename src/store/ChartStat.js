@@ -1,13 +1,14 @@
 import {defineStore} from "pinia";
-import {ref} from "vue";
+import {reactive, ref} from "vue";
 
 const chartData = ref({
     labels: [],
     datasets: []
 })
+initData()
 
 function initData() {
-    let dataset = Array()
+    let dataset = []
     let labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July']
 
     for (let i = 0; i < 3; i++) {
@@ -30,8 +31,6 @@ function initData() {
 }
 
 function addData() {
-    let newDataset = JSON.parse(JSON.stringify(chartData.value.datasets))
-
     let dataObj = {}
     let color = getRandomColor()
 
@@ -49,7 +48,7 @@ function addData() {
 }
 
 function updateData() {
-    chartData.value.datasets.forEach(item => {
+    chartData.datasets.forEach(item => {
         if (item.label.includes('Data') && item.hidden == false) {
             item.hidden = true
         } else {
