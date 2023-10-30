@@ -9,6 +9,7 @@ import DatePicker from "/@components/DatePicker.vue"
 import VueChartJsLine from "/@components/VueChartJsLine.vue";
 import MultiChips from "/@components/MultiChips.vue"
 import RefAndReactive from "/@components/RefAndReactive.vue"
+import UrlParams from "/@components/UrlParams.vue";
 import { defineComponent } from 'vue'
 
 const NotFound = defineComponent({
@@ -27,8 +28,13 @@ const routes = [
     { path: '/date_picker', name: 'date_picker', component: DatePicker },
     { path: '/vue_chart_js', name: 'vue_chart_js', component: VueChartJsLine },
     { path: '/multi_chips', name: 'multi_chips', component: MultiChips },
-    { path: '/ref_and_reactive', name: 'multi_chips', component: RefAndReactive },
+    { path: '/ref_and_reactive', name: 'ref_and_reactive', component: RefAndReactive },
     { path: '/:catchAll(.*)+', component: NotFound },
+    {
+        path: '/url_params/:type',
+        name: 'url_params',
+        component: UrlParams
+    }
 ]
 
 export default routes
