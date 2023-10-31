@@ -12,11 +12,15 @@
         <v-card-text>
             {{ chartDataComputed }}
         </v-card-text>
+        <v-card-text>
+            {{ assignRef }}
+        </v-card-text>
         <v-card-text class="ma-2">
             <v-btn class="mr-2" @click="myVarUpdate">myVar</v-btn>
             <v-btn class="mr-2" @click="myReactviceUpdate">myReactive</v-btn>
             <v-btn class="mr-2" @click="myMultiVarUpdate">multiVar</v-btn>
             <v-btn class="mr-2" @click="chartDataUpdate">chartData</v-btn>
+            <v-btn class="mr-2" @click="assignRefData">assignRefData</v-btn>
         </v-card-text>
     </v-card>
 </template>
@@ -56,6 +60,12 @@ const chartDataComputed = computed(() => {
     return contStat.chartData
 })
 
+// ref 객체를 Object.assign 할때
+const assignRef = ref({
+    field1: '',
+    field2: ''
+})
+
 const updateCnt = ref(0)
 function myVarUpdate() {
     myVar.value = 'update: ' + updateCnt.value
@@ -74,6 +84,16 @@ function myMultiVarUpdate() {
 
 function chartDataUpdate() {
     contStat.addData()
+}
+
+function assignRefData() {
+    let obj = {
+        field1: 'test field',
+        field2: '',
+        field3: 'object'
+    }
+
+    Object.assign(assignRef.value, obj)
 }
 
 function generateRandomNumbers(count) {
