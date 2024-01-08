@@ -10,6 +10,7 @@ import VueChartJsLine from "/@components/VueChartJsLine.vue";
 import MultiChips from "/@components/MultiChips.vue"
 import RefAndReactive from "/@components/RefAndReactive.vue"
 import UrlParams from "/@components/UrlParams.vue";
+import Vuetify3Picker from "/@components/Vuetify3Picker.vue";
 import { defineComponent } from 'vue'
 
 const NotFound = defineComponent({
@@ -29,6 +30,7 @@ const routes = [
     { path: '/vue_chart_js', name: 'vue_chart_js', component: VueChartJsLine },
     { path: '/multi_chips', name: 'multi_chips', component: MultiChips },
     { path: '/ref_and_reactive', name: 'ref_and_reactive', component: RefAndReactive },
+    { path: '/vuetify_picker', name: 'vuetify_picker', component: Vuetify3Picker },
     { path: '/:catchAll(.*)+', component: NotFound },
     {
         path: '/url_params/:type',
