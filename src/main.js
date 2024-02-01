@@ -6,9 +6,12 @@ import App from '/@/App.vue'
 import '/@/index.css'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import 'bootstrap/dist/js/bootstrap.esm.min.js'
+import piniaPluginPersistedState from "pinia-plugin-persistedstate"
+
 
 const app = createApp(App)
 const pinia = createPinia();
+pinia.use(piniaPluginPersistedState)
 
 // Vuetify
 import 'vuetify/styles'

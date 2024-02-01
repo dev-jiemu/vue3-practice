@@ -11,6 +11,8 @@ import MultiChips from "/@components/MultiChips.vue"
 import RefAndReactive from "/@components/RefAndReactive.vue"
 import UrlParams from "/@components/UrlParams.vue";
 import Vuetify3Picker from "/@components/Vuetify3Picker.vue";
+import PiniaPersistedState from "/@components/PiniaPersistedState.vue";
+import TextFieldList from "/@components/TextFieldList.vue"
 import { defineComponent } from 'vue'
 
 const NotFound = defineComponent({
@@ -36,7 +38,9 @@ const routes = [
         path: '/url_params/:type',
         name: 'url_params',
         component: UrlParams
-    }
+    },
+    { path: '/pinia_persisted_state', name: 'pinia_persisted_state', component: PiniaPersistedState },
+    { path: '/text_field_list', name: 'text_field_list', component: TextFieldList },
 ]
 
 export default routes
