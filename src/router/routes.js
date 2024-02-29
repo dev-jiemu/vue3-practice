@@ -13,6 +13,7 @@ import UrlParams from "/@components/UrlParams.vue";
 import Vuetify3Picker from "/@components/Vuetify3Picker.vue";
 import PiniaPersistedState from "/@components/PiniaPersistedState.vue";
 import TextFieldList from "/@components/TextFieldList.vue"
+import CardMaxWidthScroll from "/@components/CardMaxWidthScroll.vue";
 import { defineComponent } from 'vue'
 
 const NotFound = defineComponent({
@@ -41,6 +42,7 @@ const routes = [
     },
     { path: '/pinia_persisted_state', name: 'pinia_persisted_state', component: PiniaPersistedState },
     { path: '/text_field_list', name: 'text_field_list', component: TextFieldList },
+    { path: '/card_max_width_scroll', name: 'card_max_width_scroll', component: CardMaxWidthScroll },
 ]
 
 export default routes
