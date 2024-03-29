@@ -7,7 +7,7 @@ import '/@/index.css'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import 'bootstrap/dist/js/bootstrap.esm.min.js'
 import piniaPluginPersistedState from "pinia-plugin-persistedstate"
-
+import VueApexCharts from "vue3-apexcharts";
 
 const app = createApp(App)
 const pinia = createPinia();
@@ -28,4 +28,5 @@ app.use(store)
 app.use(router)
 app.use(pinia)
 app.use(vuetify)
+app.use(VueApexCharts)
 app.mount('#app')
