@@ -11,6 +11,8 @@
   "dependencies": {
     "@bundled-es-modules/axios": "^0.27.2",
     "@popperjs/core": "^2.11.6",
+    "@sentry/tracing": "^7.112.2",
+    "@sentry/vue": "^7.112.2",
     "@vuepic/vue-datepicker": "^6.1.0",
     "apexcharts": "^3.48.0",
     "axios": "^1.2.2",
