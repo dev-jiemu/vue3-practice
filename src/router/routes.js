@@ -16,6 +16,7 @@ import TextFieldList from "/@components/TextFieldList.vue"
 import CardMaxWidthScroll from "/@components/CardMaxWidthScroll.vue";
 import ApexCharts from "/@components/ApexCharts.vue";
 import vuetifyPagination from '/@components/VuetifyPagination.vue'
+import vuetifyTimeline from '/@components/VuetifyTimeline.vue'
 
 import { defineComponent } from 'vue'
 
@@ -47,7 +48,8 @@ const routes = [
     { path: '/text_field_list', name: 'text_field_list', component: TextFieldList },
     { path: '/card_max_width_scroll', name: 'card_max_width_scroll', component: CardMaxWidthScroll },
     { path: '/apex_chart', name: 'apex_chart', component: ApexCharts },
-    { path: '/vuetify_pagination', name: 'vuetify_pagination', component: vuetifyPagination},
+    { path: '/vuetify_pagination', name: 'vuetify_pagination', component: vuetifyPagination },
+    { path: '/vuetify_timeline', name: 'vuetify_timeline', component: vuetifyTimeline },
 ]
 
 export default routes
