@@ -17,6 +17,7 @@ import CardMaxWidthScroll from "/@components/CardMaxWidthScroll.vue";
 import ApexCharts from "/@components/ApexCharts.vue";
 import vuetifyPagination from '/@components/VuetifyPagination.vue'
 import vuetifyTimeline from '/@components/VuetifyTimeline.vue'
+import treeView from '/@components/TreeView.vue'
 
 import { defineComponent } from 'vue'
 
@@ -50,6 +51,7 @@ const routes = [
     { path: '/apex_chart', name: 'apex_chart', component: ApexCharts },
     { path: '/vuetify_pagination', name: 'vuetify_pagination', component: vuetifyPagination },
     { path: '/vuetify_timeline', name: 'vuetify_timeline', component: vuetifyTimeline },
+    { path: '/tree_view', name: 'tree_view', component: treeView },
 ]
 
 export default routes
