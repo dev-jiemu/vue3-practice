@@ -18,6 +18,7 @@ import ApexCharts from "/@components/ApexCharts.vue";
 import vuetifyPagination from '/@components/VuetifyPagination.vue'
 import vuetifyTimeline from '/@components/VuetifyTimeline.vue'
 import treeView from '/@components/TreeView.vue'
+import Draggable from '/@components/Draggable.vue'
 
 import { defineComponent } from 'vue'
 
@@ -52,6 +53,7 @@ const routes = [
     { path: '/vuetify_pagination', name: 'vuetify_pagination', component: vuetifyPagination },
     { path: '/vuetify_timeline', name: 'vuetify_timeline', component: vuetifyTimeline },
     { path: '/tree_view', name: 'tree_view', component: treeView },
+    { path: '/draggable', name: 'draggable', component: Draggable },
 ]
 
 export default routes
