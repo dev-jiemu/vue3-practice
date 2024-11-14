@@ -19,6 +19,7 @@ import vuetifyPagination from '/@components/VuetifyPagination.vue'
 import vuetifyTimeline from '/@components/VuetifyTimeline.vue'
 import treeView from '/@components/TreeView.vue'
 import Draggable from '/@components/Draggable.vue'
+import VSelectCustom from "/@components/VSelectCustom.vue";
 
 import { defineComponent } from 'vue'
 
@@ -41,11 +42,7 @@ const routes = [
     { path: '/ref_and_reactive', name: 'ref_and_reactive', component: RefAndReactive },
     { path: '/vuetify_picker', name: 'vuetify_picker', component: Vuetify3Picker },
     { path: '/:catchAll(.*)+', component: NotFound },
-    {
-        path: '/url_params/:type',
-        name: 'url_params',
-        component: UrlParams
-    },
+    { path: '/url_params/:type', name: 'url_params', component: UrlParams },
     { path: '/pinia_persisted_state', name: 'pinia_persisted_state', component: PiniaPersistedState },
     { path: '/text_field_list', name: 'text_field_list', component: TextFieldList },
     { path: '/card_max_width_scroll', name: 'card_max_width_scroll', component: CardMaxWidthScroll },
@@ -54,6 +51,7 @@ const routes = [
     { path: '/vuetify_timeline', name: 'vuetify_timeline', component: vuetifyTimeline },
     { path: '/tree_view', name: 'tree_view', component: treeView },
     { path: '/draggable', name: 'draggable', component: Draggable },
+    { path: '/select_custom', name: 'select_custom', component: VSelectCustom },
 ]
 
 export default routes
