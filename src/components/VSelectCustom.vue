@@ -73,8 +73,8 @@ const checkSelected = () => {
 const formatSelection = computed(() => {
     if (selected.value.length === 0) {
         return ''
-    } else if (checkSelected) {
-        return 'Select All' // TODO: fix
+    } else if (allSelected.value) {
+        return 'Select All'
     }
 
     const maxLength = 20
